@@ -10,7 +10,11 @@ X, y = data.data, data.target
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-dt_classifier = DecisionTreeClassifier(random_state=42)
+dt_classifier = DecisionTreeClassifier(
+    criterion='gini', # 'entropy'
+    max_depth=5,
+    min_samples_split=3,
+    random_state=42)
 
 dt_classifier.fit(X_train, y_train)
 
