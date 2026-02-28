@@ -38,4 +38,4 @@ knn_classifier = KNeighborsClassifier(n_neighbors=optimal_k)
 knn_classifier.fit(X_train_scaled, y_train)
 y_pred = knn_classifier.predict(X_test_scaled)
 
-print(f"Dokładność KNN: {accuracy_score(y_test, y_pred)}")
+print(f"Dokładność KNN: {(accuracy_score(y_test, y_pred)*100):.2f}%")
