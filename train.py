@@ -7,7 +7,11 @@ from sklearn.tree import DecisionTreeClassifier
 data = load_digits()
 X, y = data.data, data.target
 
-model = DecisionTreeClassifier(random_state=42)
+model = DecisionTreeClassifier(
+    criterion='entropy',
+    max_depth=None,
+    min_samples_split=2,
+    random_state=42)
 model.fit(X, y)
 
 joblib.dump(model, 'model.joblib')

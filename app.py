@@ -20,5 +20,9 @@ def index():
             digit = model.predict(data)[0]
     return render_template('index.html', digit=digit)
 
+@app.route("/a", methods=['GET', 'POST'])
+def a():
+    return render_template("a.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
