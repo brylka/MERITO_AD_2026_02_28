@@ -10,7 +10,7 @@ from sklearn import tree
 data = load_iris()
 X, y = data.data, data.target
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
 
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
@@ -25,3 +25,11 @@ for k in k_range:
     scores.append(knn.score(X_test_scaled, y_test))
 
 print(scores)
+
+plt.figure(figsize=(10,5))
+plt.plot(k_range, scores, marker='o')
+plt.grid(True)
+plt.xlabel('Wartość k (odpytywana liczba sąsiadów)')
+plt.ylabel('Dokładność')
+plt.title('Dokładność KNN dla różnych wartości k (liczby sąsiadów)')
+plt.show()
