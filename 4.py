@@ -41,3 +41,14 @@ plt.ylabel('Metoda łokcia')
 plt.plot(K_range, inertias)
 plt.grid(True)
 plt.show()
+
+optimal_k = 4
+kmeans = KMeans(n_clusters=optimal_k, random_state=42)
+y_kmeans = kmeans.fit_predict(X_blobs)
+
+plt.figure(figsize=(8, 5))
+plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_kmeans)
+plt.title('Klasteryzacja K-means')
+plt.xlabel('Cecha 1')
+plt.ylabel('Cecha 2')
+plt.show()
