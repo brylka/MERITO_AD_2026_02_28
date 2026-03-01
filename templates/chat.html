@@ -6,9 +6,11 @@
 </head>
 <body>
   <h1>Chatbot Gemini</h1>
-  {{ history }}
-
+  {% for msg in history %}
+  <p><b>{{ 'Ja:' if msg.role == 'user' else 'Gemini:' }}</b> {{ msg.parts[0].text }}</p>
+  {% endfor %}
   <form method="POST">
+  <input type="hidden" name="history" value="{{ history_json }}">
   <input type="text" name="prompt" required>
   <button type="submit">Wyślij</button>
 </form>
