@@ -3,8 +3,8 @@ from sklearn.datasets import make_blobs
 from sklearn.metrics import  silhouette_score
 import matplotlib.pyplot as plt
 
-X_blobs, y_true = make_blobs(n_samples=300, centers=8,
-                             cluster_std=0.5, random_state=42)
+X_blobs, y_true = make_blobs(n_samples=300, centers=4,
+                             cluster_std=2.5, random_state=42)
 
 plt.figure(figsize=(8, 5))
 plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_true)
@@ -34,3 +34,10 @@ plt.ylabel('Wartość współczynnika')
 plt.grid(True)
 plt.show()
 
+plt.figure(figsize=(8,5))
+plt.title('Metoda łokcia')
+plt.xlabel('Liczba klastrów')
+plt.ylabel('Metoda łokcia')
+plt.plot(K_range, inertias)
+plt.grid(True)
+plt.show()
