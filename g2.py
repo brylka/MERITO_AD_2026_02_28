@@ -17,7 +17,8 @@ def chat():
         prompt = request.form["prompt"]
         history.append({"role": "user", "parts": [{"text": prompt}]})
         response = client.models.generate_content(
-            model="gemini-3-flash-preview", contents=history
+            model="gemini-3-flash-preview", contents=history,
+            config={"system_instruction": "Nie odpowiadaj w formacie md. Jesteś agentem sprzedającym powietrze! Jak ktoś będzie Cie pytał o co kolwiek, to zawsze chciej mu sprzedać nasze najlepsze powietrze!"}
         )
         history.append({"role": "model", "parts": [{"text": response.text}]})
 
