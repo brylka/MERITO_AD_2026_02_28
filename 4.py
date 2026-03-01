@@ -4,7 +4,7 @@ from sklearn.metrics import  silhouette_score
 import matplotlib.pyplot as plt
 
 X_blobs, y_true = make_blobs(n_samples=300, centers=4,
-                             cluster_std=2.5, random_state=42)
+                             cluster_std=0.5, random_state=42)
 
 plt.figure(figsize=(8, 5))
 plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_true)
@@ -48,7 +48,10 @@ y_kmeans = kmeans.fit_predict(X_blobs)
 
 plt.figure(figsize=(8, 5))
 plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_kmeans)
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],
+            marker='X', c='red', s=200, label='Centroidy')
 plt.title('Klasteryzacja K-means')
 plt.xlabel('Cecha 1')
 plt.ylabel('Cecha 2')
+plt.legend()
 plt.show()
