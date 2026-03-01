@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
 #X_blobs, y_true = make_blobs(n_samples=1000, centers=4, cluster_std=1.5, random_state=42)
-X, y_true = make_moons(n_samples=300, noise=0.05, random_state=42)
+X, y_true = make_moons(n_samples=300, noise=0.1, random_state=42)
 #X, y_true = make_circles(n_samples=300, noise=0.05, factor=0.5, random_state=42)
 
 # kmeans = KMeans(n_clusters=2, random_state=42)
@@ -14,7 +14,7 @@ X, y_true = make_moons(n_samples=300, noise=0.05, random_state=42)
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-dbscan = DBSCAN(eps=0.4, min_samples=5)
+dbscan = DBSCAN(eps=0.3, min_samples=5)
 y_dbscan = dbscan.fit_predict(X_scaled)
 
 plt.figure(figsize=(16, 5))
