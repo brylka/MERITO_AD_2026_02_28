@@ -1,10 +1,11 @@
 from sklearn.cluster import KMeans
-from sklearn.datasets import make_blobs, make_moons
+from sklearn.datasets import make_blobs, make_moons, make_circles
 from sklearn.metrics import  silhouette_score
 import matplotlib.pyplot as plt
 
 #X_blobs, y_true = make_blobs(n_samples=1000, centers=4, cluster_std=1.5, random_state=42)
-X_blobs, y_true = make_moons(n_samples=300, noise=0.05, random_state=42)
+#X_blobs, y_true = make_moons(n_samples=300, noise=0.05, random_state=42)
+X_blobs, y_true = make_circles(n_samples=300, noise=0.05, factor=0.5, random_state=42)
 
 kmeans = KMeans(n_clusters=2, random_state=42)
 y_kmeans = kmeans.fit_predict(X_blobs)
