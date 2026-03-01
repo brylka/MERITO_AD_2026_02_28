@@ -3,15 +3,8 @@ from sklearn.datasets import make_blobs
 from sklearn.metrics import  silhouette_score
 import matplotlib.pyplot as plt
 
-X_blobs, y_true = make_blobs(n_samples=300, centers=4,
-                             cluster_std=0.5, random_state=42)
-
-plt.figure(figsize=(8, 5))
-plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_true)
-plt.title('Prawdziwe etykiety')
-plt.xlabel('Cecha 1')
-plt.ylabel('Cecha 2')
-plt.show()
+X_blobs, y_true = make_blobs(n_samples=1000, centers=4,
+                             cluster_std=1.5, random_state=42)
 
 inertias = []
 silhouette_scores = []
@@ -46,7 +39,17 @@ optimal_k = 4
 kmeans = KMeans(n_clusters=optimal_k, random_state=42)
 y_kmeans = kmeans.fit_predict(X_blobs)
 
-plt.figure(figsize=(8, 5))
+
+plt.figure(figsize=(16, 5))
+plt.subplot(1,2,1)
+plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_true)
+plt.title('Prawdziwe etykiety')
+plt.xlabel('Cecha 1')
+plt.ylabel('Cecha 2')
+# plt.show()
+#
+# plt.figure(figsize=(8, 5))
+plt.subplot(1,2,2)
 plt.scatter(X_blobs[:, 0], X_blobs[:, 1], c=y_kmeans)
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],
             marker='X', c='red', s=200, label='Centroidy')
